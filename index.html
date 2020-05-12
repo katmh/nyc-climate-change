@@ -56,12 +56,36 @@
       <div class="step-content">
         <h3>Demographics</h3>
       </div>
+
+      <nav id="map-menu">
+        <h4>View neighborhoods by</h4>
+        <div class="menu-row">
+          <input type="radio" name="demographics-menu" id="pctwhite" checked>
+          <label for="pctwhite">% White</label>
+        </div>
+        
+        <div class="menu-row">
+          <input type="radio" name="demographics-menu" id="education">
+          <label for="education">Education</label>
+        </div>
+
+        <div class="menu-row">
+          <input type="radio" name="demographics-menu" id="householdmedianincome">
+          <label for="householdmedianincome">Household Median Income</label>
+        </div>
+
+        <div class="menu-row">
+          <input type="radio" name="demographics-menu" id="totalrentburdened">
+          <label for="totalrentburdened">Total Rent Burdened</label>
+        </div>
+
+        <div class="menu-row">
+          <input type="radio" name="demographics-menu" id="clear">
+          <label for="clear">Clear</label>
+        </div>
+      </nav>
     </div>
   </article>
-
-  <nav id="map-menu">
-    <h4>Change demographics</h4>
-  </nav>
 </section>
 
 {% for post in site.posts %}

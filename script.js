@@ -8,16 +8,14 @@ var map = new mapboxgl.Map({
   zoom: 10,
 });
 
+var bldgClasses = ["allbuildings", "exempt-all", "exempt-res", "notexempt-res"],
+  demographicLayers = ["pctwhite", "education", "householdmedianincome", "totalrentburdened"];
+
 map.dragPan.disable();
 
 map.on("load", function() {
-  // hide all buildings
-  console.log("loaded")
-  //map.setLayoutProperty("allbuildings", "visibility", "visible");
-
-
-  // initialize the scrollama
-  let scroller = scrollama();
+  // initialize scrollama
+  var scroller = scrollama();
 
   // set up stickyfill
   d3.selectAll(".sticky").each(function () {
@@ -27,9 +25,6 @@ map.on("load", function() {
   // force a resize on load to ensure proper dimensions are sent to scrollama
   scroller.resize();
 
-  let bldgClasses = ["allbuildings", "exempt-all", "exempt-res", "notexempt-res"];
-  let demographicLayers = ["pctwhite", "education", "householdmedianincome", "totalrentburdened"]
-
   scroller
     .setup({
       step: ".step",
@@ -37,7 +32,7 @@ map.on("load", function() {
     })
     .onStepEnter(response => {
       // response = { element, direction, index }
-      let currentClassList = response.element.classList;
+      currentClassList = response.element.classList;
 
       bldgClasses.forEach(className => {
         if (currentClassList.contains(className)) {
@@ -51,9 +46,7 @@ map.on("load", function() {
       }
     })
     .onStepExit(response => {
-      let currentClassList = response.element.classList;
-      console.log(`exiting ${currentClassList}`)
-      console.log(response.direction);
+      currentClassList = response.element.classList;
 
       bldgClasses.forEach(className => {
         if (currentClassList.contains(className) && !currentClassList.contains("demographics")) {
@@ -76,3 +69,33 @@ map.on("load", function() {
 
   window.addEventListener("resize", scroller.resize);
 })
+
+// demographics menu
+let menuButtons = document.querySelector("#map-menu").getElementsByTagName("input");
+for (btn of menuButtons) {
+  btn.addEventListener("click", function(e) {
+    // clear button
+    if (e.target.id == "clear") {
+      // hide all demographic layers
+      for (layer of demographicLayers) {
+        map.setLayoutProperty(layer, "visibility", "none");
+      }
+      // remove checked style so it functions more like a button
+      e.target.checked = false;
+      return;
+    }
+
+    // all other buttons
+    if (e.target.checked) {
+      // make selected layer visible
+      map.setLayoutProperty(e.target.id, "visibility", "visible");
+
+      // hide all other layers
+      for (layer of demographicLayers) {
+        if (layer != e.target.id) {
+          map.setLayoutProperty(layer, "visibility", "none");
+        }
+      }
+    }
+  })
+}

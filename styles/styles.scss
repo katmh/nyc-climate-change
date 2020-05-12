@@ -160,6 +160,35 @@ header {
   background: rgba(200,200,200,.25);
 }
 
+#map-menu h4 {
+  padding: .85rem 1rem .75rem;
+  border-bottom: 1px solid #ccc;
+  font-size: 1.15rem;
+  line-height: 1;
+  color: #232323;
+}
+
+#map-menu input {
+  display: none;
+}
+
+#map-menu input:checked + label {
+  background: rgba(100,100,100,.25);
+}
+
+#map-menu label {
+  display: block;
+  padding: .75rem 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  color: #343434;
+  transition: .1s;
+}
+
+#map-menu label:hover {
+  background: rgba(150,150,150,.25);
+}
+
 footer {
   text-align: center;
   padding: 0 1rem 2rem;
