@@ -1,0 +1,65 @@
+---
+---
+
+{% include head.html %}
+
+{% include header.html %}
+
+{% for post in site.posts %}
+  {% if post.title == "Intro" %}
+    {% include intro.html %}
+  {% endif %}
+{% endfor %}
+
+<section>
+  <div id="map-container" class="sticky">
+    <p>0</p>
+    <div id="map"></div>
+  </div>
+
+  <section id="step-container">
+    <div class="step allbuildings">
+      <div class="step-content">
+        <h3>Where are the buildings?</h3>
+      </div>
+    </div>
+
+    <div class="step exempt-all">
+      <div class="step-content">
+        <h3>What buildings are exempt?</h3>
+      </div>
+    </div>
+
+    <div class="step exempt-res">
+      <div class="step-content">
+        <h3>Of the exempt buildings, where are the residential ones?</h3>
+      </div>
+    </div>
+
+    <div class="step notexempt-res">
+      <div class="step-content">
+        <h3>Where are the non-exempt residential buildings?</h3>
+      </div>
+    </div>
+
+    <div class="step exempt-res before-demographics">
+      <div class="step-content">
+        <h3>Back to the extent residential buildings</h3>
+      </div>
+    </div>
+
+    <div class="step exempt-res demographics">
+      <div class="step-content">
+        <h3>Demographics</h3>
+      </div>
+    </div>
+  </article>
+
+  <nav>
+    <h4>Change demographics</h4>
+  </nav>
+</section>
+
+<script src="script.js"></script>
+
+{% include foot.html %}
