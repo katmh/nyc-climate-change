@@ -2,8 +2,6 @@
 title: Conclusion
 ---
 
-## Conclusion/call to action
+So, what is the story here? While yes Local Law 97 is a critical law that needed to happen, it is also a law that puts New York City’s most vulnerable populations at risk. It appears Local Law 97’s costs, like many other aspects of climate change, will be disproportionately placed upon New York City’s poorest and most burdened populations. 
 
-What obstacles might hinder Local Law 97's implementation? Just how stringent are the emissions targets and timeline? What help can burdened landlords receive? And we can't look at sustainability in isolation—how does this law fit into larger contexts of the economy and society?
-
-The main criticism of Local Law 97 is that too many buildings are exempt, placing unfair pressure on those that must comply. Aside from the usual suspects (such as hospitals, places of worship, public housing, and energy plants), buildings with any rent-regulated units—even just one—are exempt. This means that a whopping 40 percent of residential units must "implement a prescriptive package of energy savings measures" instead.
+Recognizing this, it is imperative that the city takes steps to secure an equitable outcome for Local Law 97. This may mean additional steps, or even laws, that guarantee the costs of the required energy improvements are not pushed onto tenants. Additionally, community engagement and renovation oversight agencies may also prove necessary. Community engagement, because it is critical that these communities know their rights going into this process. Oversight agencies, because no process is perfect, and it is essential that a means for recourse is established.

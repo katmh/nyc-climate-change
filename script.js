@@ -19,6 +19,7 @@ var labels = {
 };
 
 var legend = document.querySelector("#legend");
+var menu = document.querySelector("#map-menu");
 var legendLabels = legend.querySelectorAll(".label");
 
 map.dragPan.disable();
@@ -54,8 +55,9 @@ map.on("load", function() {
       if (currentClassList.contains("demographics")) {
         map.setLayoutProperty("householdmedianincome", "visibility", "visible");
 
-        // make legend visible
-        document.querySelector("#legend").style.opacity = "1";
+        // make legend and menu visible
+        legend.style.opacity = "1";
+        menu.style.opacity = "1";
       }
     })
     .onStepExit(response => {
@@ -77,8 +79,9 @@ map.on("load", function() {
         demographicLayers.forEach(layer => {
           map.setLayoutProperty(layer, "visibility", "none");
 
-          // hide legend
+          // hide legend and menu
           legend.style.opacity = "0";
+          menu.style.opacity = "0";
         })
       }
     });
