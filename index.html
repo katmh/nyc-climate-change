@@ -7,7 +7,7 @@
 
 {% for post in site.posts %}
   {% if post.title == "Intro" %}
-    {% include intro.html %}
+    {% include writing.html %}
   {% endif %}
 {% endfor %}
 
@@ -63,6 +63,12 @@
     <h4>Change demographics</h4>
   </nav>
 </section>
+
+{% for post in site.posts %}
+  {% if post.title == "Conclusion" %}
+    {% include writing.html %}
+  {% endif %}
+{% endfor %}
 
 <script src="script.js"></script>
 
