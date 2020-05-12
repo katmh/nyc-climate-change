@@ -1,6 +1,24 @@
 ---
 ---
 
+$desat-dark-cyan: #417676;
+$desat-dark-pink: #5d2d46;
+$dark-green: #57761e;
+
+$exempt-all: $dark-green;
+$exempt-res: $desat-dark-cyan;
+$notexempt-res: $desat-dark-pink;
+
+.exempt-all {
+  color: $exempt-all;
+}
+.exempt-res {
+  color: $exempt-res;
+}
+.notexempt-res {
+  color: $notexempt-res;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -50,6 +68,7 @@ h3 {
   font-size: 1.75rem;
   background: rgba(200,200,200,.25);
   padding: .75rem 1rem;
+  color: #232323;
 }
 
 p {
