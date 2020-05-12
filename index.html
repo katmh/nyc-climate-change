@@ -13,8 +13,34 @@
 
 <section>
   <div id="map-container" class="sticky">
-    <p>0</p>
-    <div id="map"></div>
+    <div id="map">
+      <div id="legend">
+        <div class="row">
+          <div class="circle" style="background: #fef0d9"></div>
+          <span class="label"><22%</span>
+        </div>
+
+        <div class="row">
+          <div class="circle" style="background: #fdcc8a"></div>
+          <span class="label">22%-41%</span>
+        </div>
+
+        <div class="row">
+          <div class="circle" style="background: #fc8d5a"></div>
+          <span class="label">41-59%</span>
+        </div>
+
+        <div class="row">
+          <div class="circle" style="background: #e34a33"></div>
+          <span class="label">59-75%</span>
+        </div>
+
+        <div class="row">
+          <div class="circle" style="background: #b30000"></div>
+          <span class="label">75%<</span>
+        </div>
+      </div>
+    </div>
   </div>
 
   <section id="step-container">
@@ -61,22 +87,22 @@
         <h4>View neighborhoods by</h4>
         <div class="menu-row">
           <input type="radio" name="demographics-menu" id="pctwhite" checked>
-          <label for="pctwhite">% White</label>
+          <label for="pctwhite">% identifying as White</label>
         </div>
         
         <div class="menu-row">
           <input type="radio" name="demographics-menu" id="education">
-          <label for="education">Education</label>
-        </div>
-
-        <div class="menu-row">
-          <input type="radio" name="demographics-menu" id="householdmedianincome">
-          <label for="householdmedianincome">Household Median Income</label>
+          <label for="education">% with post-secondary education</label>
         </div>
 
         <div class="menu-row">
           <input type="radio" name="demographics-menu" id="totalrentburdened">
-          <label for="totalrentburdened">Total Rent Burdened</label>
+          <label for="totalrentburdened">% rent-burdened</label>
+        </div>
+
+        <div class="menu-row">
+          <input type="radio" name="demographics-menu" id="householdmedianincome">
+          <label for="householdmedianincome">Household median income</label>
         </div>
 
         <div class="menu-row">

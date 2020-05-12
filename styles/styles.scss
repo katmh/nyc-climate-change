@@ -205,3 +205,28 @@ footer a:hover {
   color: #454545;
   border-bottom-color: #454545;
 }
+
+#legend {
+  position: absolute;
+  right: 20%;
+  top: 5%;
+  opacity: 0;
+  transition: .1s;
+}
+
+#legend .row {
+  display: block;
+  display: flex;
+}
+
+#legend .circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  margin: 2px 10px 2px 0;
+  display: inline-block;
+}
+
+#legend .label {
+  font-weight: bold;
+}

@@ -11,6 +11,16 @@ var map = new mapboxgl.Map({
 var bldgClasses = ["allbuildings", "exempt-all", "exempt-res", "notexempt-res"],
   demographicLayers = ["pctwhite", "education", "householdmedianincome", "totalrentburdened"];
 
+var labels = {
+  "pctwhite": ['<22%', '22%-41%', '41%-59%', '59%-75%', '75%<'],
+  "education": ['<42%', '42%-54%', '54%-67%', '67%-80%', '91%<'],
+  "householdmedianincome": ['<45.8k', '45.8k-70k', '70k-91k', '91k-111k', '111k<'],
+  "totalrentburdened": ['<41%', '41%-47%', '47%-53%', '53%-59%', '59%<']
+};
+
+var legend = document.querySelector("#legend");
+var legendLabels = legend.querySelectorAll(".label");
+
 map.dragPan.disable();
 
 map.on("load", function() {
@@ -43,6 +53,9 @@ map.on("load", function() {
 
       if (currentClassList.contains("demographics")) {
         map.setLayoutProperty("householdmedianincome", "visibility", "visible");
+
+        // make legend visible
+        document.querySelector("#legend").style.opacity = "1";
       }
     })
     .onStepExit(response => {
@@ -63,6 +76,9 @@ map.on("load", function() {
       if (currentClassList.contains("demographics")) {
         demographicLayers.forEach(layer => {
           map.setLayoutProperty(layer, "visibility", "none");
+
+          // hide legend
+          legend.style.opacity = "0";
         })
       }
     });
@@ -74,7 +90,7 @@ map.on("load", function() {
 let menuButtons = document.querySelector("#map-menu").getElementsByTagName("input");
 for (btn of menuButtons) {
   btn.addEventListener("click", function(e) {
-    // clear button
+    // "clear" button
     if (e.target.id == "clear") {
       // hide all demographic layers
       for (layer of demographicLayers) {
@@ -82,6 +98,8 @@ for (btn of menuButtons) {
       }
       // remove checked style so it functions more like a button
       e.target.checked = false;
+      // hide legend
+      legend.style.opacity = "0";
       return;
     }
 
@@ -89,6 +107,16 @@ for (btn of menuButtons) {
     if (e.target.checked) {
       // make selected layer visible
       map.setLayoutProperty(e.target.id, "visibility", "visible");
+
+      // show legend if it's not visible
+      if (legend.style.opacity = "0") {
+        legend.style.opacity = "1";
+      }
+
+      // change legend labels
+      for (let i = 0; i < legendLabels.length; i++) {
+        legendLabels[i].innerText = labels[e.target.id][i];
+      }
 
       // hide all other layers
       for (layer of demographicLayers) {
