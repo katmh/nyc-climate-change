@@ -1,0 +1,97 @@
+---
+title: "LL97 Exempt/Nonexempt Buildings in NYC"
+author: "Charles Hatfield"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(dplyr)
+library(tidyverse)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+#bring in filtered pluto data
+filtered_data <- read.csv("/Users/charleshatfield/Downloads/LL97/filtered_pluto_data.csv")
+
+```
+
+
+```{r pressure, echo=FALSE}
+#add exempt column
+filtered_data <- mutate(filtered_data, exempt = 0)
+
+#assign public buildings as exempt
+filtered_data$exempt <- ifelse(filtered_data$landuse == 8, 1, 0)
+
+#assign residential buildings with 6 or more residential units, built before 1974 as exempt
+filtered_data[filtered_data$unitsres >= 6 & filtered_data$bldgclass == "R1" & filtered_data$yearbuilt <= 1974, "exempt"] <- 1
+filtered_data[filtered_data$unitsres >= 6 & filtered_data$bldgclass == "R2" & filtered_data$yearbuilt <= 1974, "exempt"] <- 1
+filtered_data[filtered_data$unitsres >= 6 & filtered_data$bldgclass == "R3" & filtered_data$yearbuilt <= 1974, "exempt"] <- 1
+filtered_data[filtered_data$unitsres >= 6 & filtered_data$bldgclass == "R4" & filtered_data$yearbuilt <= 1974, "exempt"] <- 1
+filtered_data[filtered_data$unitsres >= 6 & filtered_data$bldgclass == "R6" & filtered_data$yearbuilt <= 1974, "exempt"] <- 1
+filtered_data[filtered_data$unitsres >= 6 & filtered_data$bldgclass == "RM" & filtered_data$yearbuilt <= 1974, "exempt"] <- 1
+filtered_data[filtered_data$unitsres >= 6 & filtered_data$bldgclass == "RD" & filtered_data$yearbuilt <= 1974, "exempt"] <- 1
+filtered_data[filtered_data$unitsres >= 6 & filtered_data$bldgclass == "RP" & filtered_data$yearbuilt <= 1974, "exempt"] <- 1
+filtered_data[filtered_data$unitsres >= 6 & filtered_data$bldgclass == "RG" & filtered_data$yearbuilt <= 1974, "exempt"] <- 1
+filtered_data[filtered_data$unitsres >= 6 & filtered_data$bldgclass == "RC" & filtered_data$yearbuilt <= 1974, "exempt"] <- 1
+filtered_data[filtered_data$unitsres >= 6 & filtered_data$bldgclass == "R9" & filtered_data$yearbuilt <= 1974, "exempt"] <- 1
+
+
+#assign religious buildings as exempt
+filtered_data[filtered_data$bldgclass == "M1", "exempt"] <- 1
+filtered_data[filtered_data$bldgclass == "M2", "exempt"] <- 1
+filtered_data[filtered_data$bldgclass == "M3", "exempt"] <- 1
+filtered_data[filtered_data$bldgclass == "M4", "exempt"] <- 1
+filtered_data[filtered_data$bldgclass == "M9", "exempt"] <- 1
+
+```
+
+
+```{r pressure, echo=FALSE}
+#filter out nas
+filtered_data<- filter(
+  filtered_data,
+  !is.na(exempt)
+)
+
+#create set of non exempt buildings
+notexempt <- filter(
+  filtered_data, filtered_data$exempt == 0
+)
+
+#create set of exempt buildings
+exempt <- filter(
+  filtered_data, filtered_data$exempt == 1
+)
+
+#create set of non exempt residential buildings
+notexempt_res <- filter(
+  notexempt, notexempt$bldgclass == "R1" | notexempt$bldgclass == "R2" | notexempt$bldgclass == "R3" | notexempt$bldgclass == "R4" | notexempt$bldgclass == "R6" | notexempt$bldgclass == "R9" | notexempt$bldgclass == "RM" | notexempt$bldgclass == "RD" | notexempt$bldgclass == "RP" | notexempt$bldgclass == "RG" | notexempt$bldgclass == "RC"
+  
+)
+
+#create set of exempt residential buildings
+exempt_res <- filter(
+  exempt, exempt$bldgclass == "R1" | exempt$bldgclass == "R2" | exempt$bldgclass == "R3" | exempt$bldgclass == "R4" | exempt$bldgclass == "R6" | exempt$bldgclass == "R9"| exempt$bldgclass == "RM" | exempt$bldgclass == "RD"  | exempt$bldgclass == "RP" | exempt$bldgclass == "RG" | exempt$bldgclass == "RC"
+  
+)
+```
+
+
+```{r pressure, echo=FALSE}
+
+#write out csvs for the data sets
+write.csv(filtered_data, "filtered_pluto_data_crh.csv")
+write.csv(exempt, "exempt.csv")
+write.csv(exempt_res, "exemptres.csv")
+write.csv(notexempt, "notexempt.csv")
+write.csv(notexempt_res, "notexempt_res.csv")
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
