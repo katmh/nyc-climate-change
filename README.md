@@ -1,4 +1,4 @@
-# Understanding NYC’s Boldest Climate Change 
+# Understanding NYC’s Boldest Climate Change Law
 
 > [nyc-climate-change.now.sh](https://nyc-climate-change.now.sh/)
 
