@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <meta name="description" content="A data story about Local Law 97, requiring large buildings, which contribute 1/3 of NYC’s annual greenhouse gas emissions, to meet new emissions limits. Find out why this law matters and who’s exempt." />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <title>Understanding NYC’s Boldest Climate Change Law</title>
+
+    <!--Social Sharing Meta Tags-->
+    <meta property="og:title" content="Understanding NYC’s Boldest Climate Change Law" />
+    <meta property="og:description" content="A data story about Local Law 97, requiring large buildings, which contribute 1/3 of NYC’s annual greenhouse gas emissions, to meet new emissions limits. Find out why this law matters and who’s exempt." />
+    <meta property="og:image" content="assets/og_image.png" />
+    <meta property="og:url" content="http://localhost:4000" />
+
+    <meta name="twitter:title" content="Understanding NYC’s Boldest Climate Change Law" />
+    <meta name="twitter:description" content="A data story about Local Law 97, requiring large buildings, which contribute 1/3 of NYC’s annual greenhouse gas emissions, to meet new emissions limits. Find out why this law matters and who’s exempt." />
+    <meta name="twitter:image" content="assets/twitter_card.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!--Custom Styles-->
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--Mapbox-->
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js"></script>
+    <link
+      href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+
+    <!--Scrollytelling-->
+    <script src="https://unpkg.com/intersection-observer"></script>
+    <script src="https://unpkg.com/scrollama"></script>
+    <script src="https://www.unpkg.com/stickyfilljs@2.1.0/dist/stickyfill.min.js"></script>
+
+    <!--D3-->
+  <script src="https://unpkg.com/d3@5.9.1/dist/d3.min.js"></script>
+  </head>
+  <body>
+
+<header>
+  <div class="container">
+    <h1>
+      Understanding NYC’s <b>Boldest</b> Climate Change Law
+    </h1>
+    <p class="byline">By Katherine Huang and Charles Hatfield</p>
+  </div>
+  <img class="bg-skyline" src="assets/skyline.png" alt="NYC skyline illustration" />
+</header>
+
+
+  
+    <section class="writing-container">
+  <h2 id="introducing-local-law-97">Introducing Local Law 97</h2>
+
+<p>In NYC, buildings account for 2/3 of greenhouse gas emissions. Just 2 percent of buildings—the largest—are responsible for 30% of emissions.</p>
+
+<blockquote>
+  <p>“most ambitious climate change legislation enacted by any city in the world”</p>
+</blockquote>
+
+<p>The city is tackling climate change through the Climate Mobilization Act. The centerpiece is Local Law 97 of 2019, described as the “most ambitious climate change legislation enacted by any city in the world.”</p>
+
+<p>This law will set increasingly stringent limits on greenhouse gas emissions for large buildings in 2024 and 2030, with fines for not complying. It affects more than 60,000 buildings, with notable exemptions, including affordable housing.</p>
+
+<h2 id="the-world-is-watching">The world is watching</h2>
+
+<p>A week after the law was passed, members of the C40 Cities Climate Leadership Group had already begun discussing how to follow New York’s lead.</p>
+
+<p>Urban Green Council told <em>CityLab</em>, “Our point all along has been that if we’re going to spend the billions of dollars, let’s make sure we come up with policies that are exportable.”</p>
+
+<p>Given the importance of this law, it’s worth unpacking what obstacles might hinder its success. The main criticism is that too many buildings are exempt, placing unfair pressure on those that must comply. Aside from the usual suspects, such as hospitals, places of worship, and energy plants, buildings with any rent-regulated units—even just one—are exempt.</p>
+
+<p>This means that 40% of residential units don’t reap the benefits or bear the burdens of required energy efficiency upgrades. Who exactly is this impacting?</p>
+
+</section>
+  
+
+  
+
+
+<section>
+  <div id="map-container" class="sticky">
+    <div id="map">
+      <div id="legend">
+        <div class="row">
+          <div class="circle" style="background: #fef0d9"></div>
+          <span class="label"><22%</span>
+        </div>
+
+        <div class="row">
+          <div class="circle" style="background: #fdcc8a"></div>
+          <span class="label">22%-41%</span>
+        </div>
+
+        <div class="row">
+          <div class="circle" style="background: #fc8d5a"></div>
+          <span class="label">41-59%</span>
+        </div>
+
+        <div class="row">
+          <div class="circle" style="background: #e34a33"></div>
+          <span class="label">59-75%</span>
+        </div>
+
+        <div class="row">
+          <div class="circle" style="background: #b30000"></div>
+          <span class="label">75%<</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="step-container">
+    <div class="step allbuildings">
+      <div class="step-content">
+        <h3>Here are all the large buildings in NYC.</h3>
+        <p>Though buildings over 25,000 square feet make up just a small percentage of total buildings, the reality is they are everywhere in the city.</p>
+      </div>
+    </div>
+
+    <div class="step exempt-all">
+      <div class="step-content">
+        <h3>
+          What buildings are <span class="exempt-all">exempt</span>?
+        </h3>
+        <p>Several categories of buildings are exempt from Local Law 97, including (but not limited to) hospitals, places of worship, public housing, and rent-regulated accommodations.</p>
+      </div>
+    </div>
+
+    <div class="step exempt-res">
+      <div class="step-content">
+        <h3>
+          Of the exempt buildings, where are the <span class="exempt-res">residential</span> ones?
+        </h3>
+      </div>
+    </div>
+
+    <div class="step exempt-res demographics">
+      <div class="step-content">
+        <h3>Explore the demographics of <span class="exempt-res">exempt residential buildings</span></h3>
+      </div>
+
+      <nav id="map-menu">
+        <h4>View neighborhoods by</h4>
+        <div class="menu-row">
+          <input type="radio" name="demographics-menu" id="pctwhite" checked>
+          <label for="pctwhite">% identifying as White</label>
+        </div>
+        
+        <div class="menu-row">
+          <input type="radio" name="demographics-menu" id="education">
+          <label for="education">% with post-secondary education</label>
+        </div>
+
+        <div class="menu-row">
+          <input type="radio" name="demographics-menu" id="totalrentburdened">
+          <label for="totalrentburdened">% rent-burdened</label>
+        </div>
+
+        <div class="menu-row">
+          <input type="radio" name="demographics-menu" id="householdmedianincome">
+          <label for="householdmedianincome">Household median income</label>
+        </div>
+
+        <div class="menu-row">
+          <input type="radio" name="demographics-menu" id="clear">
+          <label for="clear">Clear</label>
+        </div>
+      </nav>
+    </div>
+  </article>
+</section>
+
+
+  
+
+  
+    <section class="writing-container">
+  <p>While Local Law 97 is a critical, necessary law, it’s also a law that puts NYC’s most vulnerable populations at risk. It appears Local Law 97’s costs, like many other aspects of climate change, will be <strong>disproportionately placed upon New York City’s poorest and most burdened populations</strong>.</p>
+
+<p>Recognizing this, it is imperative that the city takes steps to secure an equitable outcome for Local Law 97. This may mean additional steps, or even laws, that guarantee the costs of the required energy improvements are not pushed onto tenants.</p>
+
+<p>Additionally, community engagement and renovation oversight agencies may also prove necessary. Community engagement, because it is critical that these communities know their rights going into this process. Oversight agencies, because no process is perfect, and it is essential that a means for recourse is established.</p>
+
+</section>
+  
+
+
+<script src="script.js"></script>
+
+    <footer>
+      <p class="byline">
+        <a href="https://github.com/katmh/nyc-climate-change">Source Code</a>
+      </p>
+    </footer>
+  </body>
+</html>
