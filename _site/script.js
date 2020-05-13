@@ -1,11 +1,24 @@
 mapboxgl.accessToken =
   "pk.eyJ1IjoiY3JzaGF0ZmllbGQiLCJhIjoiY2s5bGZjYnhhMjVlcDNnbzRwcWlzbmU1ZSJ9.YQsNhcTftoNjzASR-38XaQ";
 
+var clientWidth = document.documentElement.clientWidth;
+
 var map = new mapboxgl.Map({
   container: "map",
   style: "mapbox://styles/crshatfield/cka1t4ujj14ir1joio9tr8xp3",
   center: [-73.95, 40.71], // NYC: approximately 40 deg N, 74 deg W
-  zoom: 10,
+  zoom: clientWidth > 700 ? 10 : 9,
+});
+
+// listen for screen resize events
+window.addEventListener('resize', function () {
+  if (document.documentElement.clientWidth < 700) {
+    // set the zoom level to 9 for smaller screens
+    map.setZoom(9);
+  } else {
+    // set the zoom level to 10
+    map.setZoom(10);
+  }
 });
 
 var bldgClasses = ["allbuildings", "exempt-all", "exempt-res", "notexempt-res"],
