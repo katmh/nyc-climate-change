@@ -51,16 +51,6 @@ h3 {
   padding: .75rem 1rem;
   color: #232323; }
 
-@media (min-width: 700px) {
-  h1 {
-    font-size: 4rem; }
-
-  h3 {
-    font-size: 1.75rem; }
-
-  header {
-    padding-top: 10rem;
-    padding-bottom: 2.5rem; } }
 p {
   color: #454545;
   line-height: 1.5;
@@ -204,3 +194,14 @@ footer a:hover {
 
 #legend .label {
   font-weight: bold; }
+
+@media (min-width: 700px) {
+  h1 {
+    font-size: 4rem; }
+
+  h3 {
+    font-size: 1.75rem; }
+
+  header {
+    padding-top: 10rem;
+    padding-bottom: 2.5rem; } }

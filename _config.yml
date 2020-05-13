@@ -4,4 +4,4 @@ description: A data story about Local Law 97, requiring large buildings, which c
 og_image: assets/og_image.png
 twitter_image: assets/twitter_card.png
 byline: By Katherine Huang and Charles Hatfield
-exclude: README.md
+exclude: ["README.md", "data/", "*.zip", "Gemfile*"]
